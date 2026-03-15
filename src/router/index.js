@@ -1,23 +1,16 @@
-import { createRouter, createWebHistory } from "vue-router"
-// router/index.js  o  App.vue
-import LandingView from '@/views/LandingView.vue'
+import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
-    path: "/",
-    name: "App",
-    component: () => import("../App.vue")
+    path: '/',
+    name: 'Landing',
+    component: () => import('../views/LandingView.vue'),
   },
-  {
-    path: "/LandingView",
-    name: "LandingView",
-    component: () => import("../views/LandingView.vue")
-  }
 ]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 })
 
 export default router
