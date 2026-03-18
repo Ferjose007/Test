@@ -337,8 +337,23 @@
           </span>
         </div>
         <div class="social-links">
-          <a href="https://github.com/Ferjose007" target="_blank" class="social-pill">GitHub</a>
-          <a href="#" class="social-pill">LinkedIn</a>
+          <a href="https://github.com/ferjose007" target="_blank" rel="noopener" class="social-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+            </svg>
+            GitHub
+          </a>
+          <a href="#" class="social-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+            LinkedIn
+          </a>
         </div>
       </div>
     </section>
@@ -1903,6 +1918,16 @@ onUnmounted(() => {
   text-decoration: none;
   font-family: 'Syne', sans-serif;
   transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.22s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-pill svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  flex-shrink: 0;
 }
 
 .social-pill:hover {
@@ -1945,67 +1970,336 @@ onUnmounted(() => {
   transform: translateY(-2px);
 }
 
-/* ══ Responsive ══════════════════════════════════ */
-@media(max-width:900px) {
+/* ══ Responsive ══════════════════════════════════
+   Breakpoints:
+   xs  < 480px  (phones small)
+   sm  < 640px  (phones large)
+   md  < 768px  (tablet portrait)
+   lg  < 1024px (tablet landscape / small laptop)
+═══════════════════════════════════════════════ */
+
+/* ── lg: ocultar nav-links de texto, mantener botones ── */
+@media(max-width:1024px) {
+  .nav {
+    padding: 20px 32px;
+  }
+
   .nav-link {
     display: none;
   }
-}
-
-@media(max-width:768px) {
-  .nav {
-    padding: 18px 24px;
-  }
-
-  .hero {
-    padding-top: 80px;
-  }
 
   .hero-content {
-    padding: 0 24px;
-    padding-bottom: 60px;
+    padding: 0 32px;
+    padding-bottom: 72px;
   }
 
   .hero-scroll-hint {
-    padding: 14px 24px;
+    padding: 14px 32px;
+  }
+
+  .section {
+    padding: 100px 32px;
+  }
+
+  .sobre-mi .section-inner {
+    gap: 48px;
+  }
+
+  .footer {
+    padding: 24px 32px;
+  }
+}
+
+/* ── md: tablet portrait ── */
+@media(max-width:768px) {
+
+  /* Deshabilitar cursor custom en táctil */
+  .cursor,
+  .cursor-dot,
+  .cursor-trail {
+    display: none;
+  }
+
+  /* Nav */
+  .nav {
+    padding: 16px 20px;
+  }
+
+  .nav-logo {
+    font-size: 0.9rem;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  /* Hero */
+  .hero {
+    padding-top: 72px;
+    min-height: 100svh;
+  }
+
+  .hero-content {
+    padding: 0 20px;
+    padding-bottom: 64px;
   }
 
   .hero-deco-num {
     display: none;
   }
 
-  .section {
-    padding: 80px 24px;
+  .hero-title {
+    font-size: clamp(2.8rem, 10vw, 5rem);
+    margin-bottom: 20px;
   }
 
+  .hero-sub {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .hero-sub br {
+    display: none;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    padding: 12px 22px;
+    font-size: 0.85rem;
+  }
+
+  .hero-chips {
+    gap: 8px;
+  }
+
+  .chip {
+    font-size: 0.72rem;
+    padding: 5px 12px;
+  }
+
+  .hero-scroll-hint {
+    padding: 14px 20px;
+    font-size: 0.65rem;
+  }
+
+  /* Secciones */
+  .section {
+    padding: 72px 20px;
+  }
+
+  .section h2 {
+    font-size: clamp(2rem, 7vw, 3rem);
+    margin-bottom: 24px;
+  }
+
+  /* Sobre mí */
   .sobre-mi .section-inner {
     grid-template-columns: 1fr;
-    gap: 44px;
+    gap: 36px;
   }
 
+  .card-photo {
+    min-height: 180px;
+    padding: 32px;
+  }
+
+  .card-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .stat {
+    padding: 14px 10px;
+  }
+
+  .stat-num {
+    font-size: 1.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.62rem;
+  }
+
+  /* Experiencia */
+  .timeline {
+    padding-left: 18px;
+  }
+
+  .timeline-card {
+    padding: 18px 20px;
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .timeline-period {
+    font-size: 0.7rem;
+  }
+
+  .timeline-company {
+    font-size: 0.95rem;
+  }
+
+  .timeline-list li {
+    font-size: 0.84rem;
+  }
+
+  /* Skills */
   .skills-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
+  .skill-card-inner {
+    padding: 18px 20px;
+  }
+
+  .soft-chip {
+    font-size: 0.78rem;
+    padding: 7px 14px;
+  }
+
+  /* Educación */
   .educ-grid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
   }
 
+  .educ-card {
+    padding: 20px;
+    gap: 14px;
+  }
+
+  .educ-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Contacto */
+  .email-link {
+    font-size: clamp(0.85rem, 4vw, 1.4rem);
+    word-break: break-all;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .contact-meta {
+    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Social pills con íconos */
+  .social-pill {
+    padding: 10px 18px;
+    font-size: 0.8rem;
+  }
+
+  /* Footer */
   .footer {
-    padding: 22px 24px;
+    padding: 20px;
     flex-direction: column;
     gap: 10px;
     text-align: center;
   }
+}
 
-  .email-link {
-    font-size: 1rem;
-    word-break: break-all;
+/* ── sm: teléfonos grandes ── */
+@media(max-width:640px) {
+  .nav {
+    padding: 14px 16px;
   }
 
-  .timeline {
-    padding-left: 20px;
+  .hero {
+    padding-top: 68px;
+  }
+
+  .hero-content {
+    padding: 0 16px;
+    padding-bottom: 56px;
+  }
+
+  .hero-scroll-hint {
+    padding: 12px 16px;
+  }
+
+  .section {
+    padding: 64px 16px;
+  }
+
+  .hero-title {
+    letter-spacing: -0.025em;
+  }
+
+  .card-stats {
+    gap: 8px;
+  }
+
+  .stat {
+    padding: 12px 8px;
+  }
+
+  .timeline-card {
+    padding: 16px;
+  }
+
+  .educ-card {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer {
+    padding: 18px 16px;
+  }
+}
+
+/* ── xs: teléfonos pequeños ── */
+@media(max-width:400px) {
+  .nav-cta {
+    padding: 7px 14px;
+    font-size: 0.76rem !important;
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 11vw, 3.2rem);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    justify-content: center;
+  }
+
+  .card-stats {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .hero-chips {
+    display: none;
+  }
+
+  .section h2 {
+    font-size: clamp(1.8rem, 8vw, 2.4rem);
+  }
+
+  .timeline-list li {
+    font-size: 0.8rem;
   }
 }
 </style>
