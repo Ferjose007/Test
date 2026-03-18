@@ -337,7 +337,7 @@
           </span>
         </div>
         <div class="social-links">
-          <a href="#" class="social-pill">GitHub</a>
+          <a href="https://github.com/Ferjose007" class="social-pill">GitHub</a>
           <a href="#" class="social-pill">LinkedIn</a>
         </div>
       </div>
